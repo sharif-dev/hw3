@@ -67,9 +67,11 @@ var words = readLine()!.components(separatedBy: " ") ;
 
 var size = readLine()!.components(separatedBy: " ") ;
 
-M = Int(size[0])
-N = Int(size[1])
+var M = Int(size[0])
+var N = Int(size[1])
 
-for i in 0...M{
-    input = readLine();
+var input = ""
+
+for _ in 0...M!{
+    input = (readLine())!;
 }
