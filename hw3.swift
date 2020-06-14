@@ -14,10 +14,7 @@ class Trie {
         var index : Int;
         for char in key {
             if char.asciiValue != nil {
-                index = Int((char.asciiValue)! - (Character("a").asciiValue)!) ;
-                if char.isUppercase {
-                  index = Int((char.asciiValue)! - (Character("A").asciiValue)!);
-                }
+                index = getInt(char: char);
                 if parent.children[index] == nil { // The character not found 
                     parent.children[index] = Node();
                 }
@@ -37,12 +34,7 @@ class Trie {
         for char in key {
         
             if char.asciiValue != nil {
-                
-                index = Int((char.asciiValue)! - (Character("a").asciiValue)!) ;
-                if char.isUppercase {
-                  index = Int((char.asciiValue)! - (Character("A").asciiValue)!);
-                }
-                // print(index);
+                index = getInt(char: char);
                 if parent.children[index] == nil { // The character not found 
                     return false;
                 }
@@ -57,11 +49,13 @@ class Trie {
     }
 
     func getInt (char: Character) -> Int {
-        var index = Int((char.asciiValue)! - (Character("a").asciiValue)!) ;
+        // var index = 
         if char.isUppercase {
-            index = Int((char.asciiValue)! - (Character("A").asciiValue)!);
+            return Int((char.asciiValue)! - (Character("A").asciiValue)!);
+        } else {
+            return Int((char.asciiValue)! - (Character("a").asciiValue)!) ;
         }
-        return index;
+        // return index;
     }
 }
 
@@ -115,11 +109,12 @@ class Table {
   }
 }
 
-
 // get inputs
-var words = readLine()!.lowercased().components(separatedBy: " ") ;
+var words = readLine()!.components(separatedBy: " ");
 var size = readLine()!.components(separatedBy: " ");
+
 var M = Int(size[0])
+
 var N = Int(size[1])
 
 // create Table
